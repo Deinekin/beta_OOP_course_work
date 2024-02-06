@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "beta-oop-coursework"
+version = "0.1.0"
+description = ""
+authors = ["Svyatoslav Deinekin <svyadey@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.lint.dependencies]
+mypy = "^1.8.0"
+black = "^24.1.1"
+flake8 = "^7.0.0"
+isort = "^5.13.2"
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+line_length = 119
+
+[tool.mypy]
+disallow_untyped_defs = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
