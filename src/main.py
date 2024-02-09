@@ -13,14 +13,16 @@ def user_interaction() -> None:
     Также необходимо ввести номер страницы, по которой будет осуществляться поиск.
     Данные необходимо вводить через пробел.
     За один раз можно просмотреть не более 100 вакансий\n"""
-    ).split(" ")
+    )
+
+    number_of_page = int(name_of_vacancy.split(" ")[-1])
 
     api_hh = GetHhAPI()
-    hh_vacancies = api_hh.get_vacancies(name_of_vacancy[0], int(name_of_vacancy[1]))
+    hh_vacancies = api_hh.get_vacancies(name_of_vacancy[0:-2], number_of_page)
     pprint(hh_vacancies)
 
     user_top_salaries = int(input("Введите N для вывода топ N вакансий по зарплате\n"))
-    top_salaries_vacancies = api_hh.get_top_n_salaries(name_of_vacancy[0], int(name_of_vacancy[1]), user_top_salaries)
+    top_salaries_vacancies = api_hh.get_top_n_salaries(name_of_vacancy[0:-2], number_of_page, user_top_salaries)
     pprint(top_salaries_vacancies)
 
     user_answer_save_to_json = int(

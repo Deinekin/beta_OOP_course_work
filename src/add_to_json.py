@@ -1,10 +1,23 @@
 import json
 import os
+from abc import ABC, abstractmethod
 
 from src.vacancies import Vacancy
 
 
-class SaveAndReadJSON:
+class AbstractSaveAndReadJSON(ABC):
+    """Абстрактный класс для работы с json"""
+
+    @abstractmethod
+    def save_vacancies_to_json(self, vacancies: list):
+        pass
+
+    @abstractmethod
+    def read_vacancies_from_json(self):
+        pass
+
+
+class SaveAndReadJSON(AbstractSaveAndReadJSON):
     """Класс для работы с json"""
 
     def __init__(self, filename="vacancy.json"):
@@ -12,7 +25,8 @@ class SaveAndReadJSON:
 
     def save_vacancies_to_json(self, vacancies: list) -> None:
         """Запись в JSON"""
-        if os.stat(self.__filename).st_size == 0:
+        print(os.path.exists(self.__filename))
+        if not os.path.exists(self.__filename) or os.stat(self.__filename).st_size == 0:
             with open(self.__filename, "w", encoding="utf-8") as f:
                 json.dump(vacancies, f, ensure_ascii=False, indent=4)
         else:

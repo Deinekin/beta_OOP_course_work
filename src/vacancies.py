@@ -1,6 +1,8 @@
 class Vacancy:
     """Класс вакансии"""
 
+    __slots__ = ["name_company", "name", "url", "salary_from", "salary_to"]
+
     def __init__(self, name_company: str, name: str, url: str, salary_from: int, salary_to: int) -> None:
         """
         Конструктор объекта Vacancy

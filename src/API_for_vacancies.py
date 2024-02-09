@@ -5,7 +5,6 @@ import requests
 # from pprint import pprint
 
 
-
 class AbstractApiHh(ABC):
     """Базовый абстрактный класс"""
 
